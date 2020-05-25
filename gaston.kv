@@ -1,0 +1,157 @@
+#: import MDLabel kivymd.uix.label
+#: import MDTextField kivymd.uix.textfield
+#: import MDTextButton kivymd.uix.button
+#: import MDRectangleFlatButton kivymd.uix.button
+
+<SelectWord@Spinner>:
+    size_hint: 1, None
+    height: '60dp'
+
+<BottomBtn@MDRectangleFlatButton>:
+    size_hint: 1, None
+    height: '40dp'
+    text_color: 0, 0, 1, 1
+    font_size: '10sp'
+
+<Gaston>:
+    preview: preview
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 0, 50
+
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: 50
+
+            MDLabel:
+                text: 'Gaston Sings!'
+                halign: 'center'
+                theme_text_color: 'Primary'
+                font_style: 'H2'
+
+            MDLabel:
+                text: root.description_text
+                halign: 'center'
+                theme_text_color: 'Secondary'
+                font_style: 'Subtitle1'
+                text_size: self.width - 400, None
+
+        MDLabel:
+            text: 'CHOOSE WORDS FROM THE DROPDOWNS BELOW.'
+            size_hint: 1, .5
+            font_style: 'Body1'
+            halign: 'center'
+            theme_text_color: 'Primary'
+            bold: True
+
+        BoxLayout:
+            orientation: 'horizontal'
+
+            Widget:
+                size_hint_x: .25
+
+            GridLayout:
+                rows: 4
+                cols: 4
+                spacing: 20
+                padding: 20, 20
+
+                SelectWord:
+                    text: 'LAD'
+                    values: app.noun_values
+                    on_text: root.change_choice(0, self)
+
+                SelectWord:
+                    text: 'FOUR DOZEN'
+                    values: app.number_values
+                    on_text: root.change_choice(1, self)
+
+                SelectWord:
+                    text: 'EGGS'
+                    values: app.noun_values[1:]
+                    on_text: root.change_choice(2, self)
+
+                SelectWord:
+                    text: 'LARGE'
+                    values: app.noun_values
+                    on_text: root.change_choice(3, self)
+
+                SelectWord:
+                    text: 'GROWN'
+                    values: app.noun_values
+                    on_text: root.change_choice(4, self)
+
+                SelectWord:
+                    text: 'FIVE DOZEN'
+                    values: app.number_values
+                    on_text: root.change_choice(5, self)
+
+                SelectWord:
+                    text: 'EGGS'
+                    values: app.noun_values[1:]
+                    on_text: root.change_choice(6, self)
+
+                SelectWord:
+                    text: 'BARGE'
+                    values: app.noun_values
+                    on_text: root.change_choice(7, self)
+
+            Widget:
+                size_hint_x: .2
+
+
+        Widget:
+            size_hint_y: .9
+
+        MDLabel:
+            id: preview
+            canvas.before:
+                Color:
+                    rgba: 255, 0, 0, 1
+                Line:
+                    width: 2
+                    rectangle: self.x+100, self.y+13, self.width-200, self.height+26
+
+            text: root.default_text
+            halign: 'center'
+            theme_text_color: 'ContrastParentBackground'
+            font_style: 'Body1'
+            text_size: self.width - 300, None
+            line_height: 2.5
+
+        Widget:
+            size_hint_y: .25
+
+        BoxLayout:
+            orientation: 'horizontal'
+
+            Widget:
+                size_hint_x: .25
+
+            GridLayout:
+                cols: 2
+                rows: 2
+                padding: 20, 20
+                spacing: 50
+
+                BottomBtn:
+                    text: 'Preview Lyrics'
+                    on_press: root.get_preview()
+
+                BottomBtn:
+                    text: 'Generate and Play'
+                    on_press: root.generate()
+
+                BottomBtn:
+                    text: 'Randomize All'
+                    on_press: root.randomize()
+
+                BottomBtn:
+                    text: 'Random, Same Word'
+                    on_press: root.same_word_lyrics()
+
+            Widget:
+                size_hint_x: .25
+
+        Widget:
+            size_hint_y: .25
