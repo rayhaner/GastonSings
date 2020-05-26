@@ -1,3 +1,6 @@
+import os
+import sys
+
 from pydub import AudioSegment
 from pydub.playback import play
 from random import choice
@@ -23,9 +26,20 @@ string_dict = {
 string_dict_rev = {value: key for key, value in string_dict.items() if key != 'eggs2'}
 
 
+def resource_path(relative_path):
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+
+    if relative_path == None:
+        return base_path
+    else:
+        return os.path.join(base_path, relative_path)
+
+
 def import_tracks():
     def from_string(s):
-        return AudioSegment.from_mp3('samples/' + s + '.mp3')
+        soundfile_name = s + '.mp3'
+        path = resource_path('samples')
+        return AudioSegment.from_mp3(os.path.join(path, soundfile_name))
 
     t_list = {}
     for filename in file_list:
@@ -36,7 +50,7 @@ def import_tracks():
 
 def to_string(*args):
     return 'When I was a ' + string_dict[args[0]] + ' I ate ' + string_dict[args[1]] + ' ' + string_dict[args[2]] + \
-           ' every morning to help me get ' + string_dict[args[3]] + "!\nAnd now that I'm " + string_dict[args[4]] + \
+           ' every morning to help me get ' + string_dict[args[3]] + ",\nAnd now that I'm " + string_dict[args[4]] + \
            ' I eat ' + string_dict[args[5]] + ' ' + string_dict[args[6]] + " so I'm roughly the size of a " + \
            string_dict[args[7]] + '!'
 

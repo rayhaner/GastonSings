@@ -1,11 +1,15 @@
+import os
+
 from kivy.properties import StringProperty, ObjectProperty
 from kivymd.app import MDApp
 from kivy.uix.boxlayout import BoxLayout
 from kivy.clock import Clock
 from functools import partial
+from kivy.lang import Builder
 
 import trackhandling
 
+Builder.load_file(os.path.join(trackhandling.resource_path(None), 'gaston.kv'))
 
 class Gaston(BoxLayout):
     description_text = StringProperty("This program can generate an edited version of the Gaston song from the 1991 "
@@ -21,6 +25,7 @@ class Gaston(BoxLayout):
 
     def change_choice(self, num, obj):
         app = MDApp.get_running_app()
+
         app.choices[num] = trackhandling.string_dict_rev[obj.text]
 
     def get_preview(self):
@@ -44,7 +49,7 @@ class Gaston(BoxLayout):
         Clock.schedule_once(partial(self.play_callback, track))
 
 
-class GastonApp(MDApp):
+class GastonWindow(MDApp):
     choices = trackhandling.original
     noun_values = list(trackhandling.string_dict.values())[:5]
     number_values = list(trackhandling.string_dict.values())[-2:]
@@ -54,4 +59,4 @@ class GastonApp(MDApp):
 
 
 if __name__ == '__main__':
-    GastonApp().run()
+    GastonWindow().run()
