@@ -36,7 +36,7 @@ def import_tracks():
 
 def to_string(*args):
     return 'When I was a ' + string_dict[args[0]] + ' I ate ' + string_dict[args[1]] + ' ' + string_dict[args[2]] + \
-           ' every morning to help me get ' + string_dict[args[3]] + "!\nBut now that I'm " + string_dict[args[4]] + \
+           ' every morning to help me get ' + string_dict[args[3]] + "!\nAnd now that I'm " + string_dict[args[4]] + \
            ' I eat ' + string_dict[args[5]] + ' ' + string_dict[args[6]] + " so I'm roughly the size of a " + \
            string_dict[args[7]] + '!'
 

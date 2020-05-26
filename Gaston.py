@@ -12,7 +12,7 @@ class Gaston(BoxLayout):
                                       "Disney film Beauty and the Beast, randomly or based on user's selection.")
 
     default_text = StringProperty("When I was a LAD I ate FOUR DOZEN EGGS every morning to help me get LARGE,\n "
-                                  "But now that I'm GROWN I eat FIVE DOZEN EGGS so I'm roughly the size of a BARGE!")
+                                  "And now that I'm GROWN I eat FIVE DOZEN EGGS so I'm roughly the size of a BARGE!")
 
     preview = ObjectProperty(None)
 
