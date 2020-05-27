@@ -29,7 +29,7 @@ string_dict_rev = {value: key for key, value in string_dict.items() if key != 'e
 def resource_path(relative_path):
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
 
-    if relative_path == None:
+    if relative_path is None:
         return base_path
     else:
         return os.path.join(base_path, relative_path)
@@ -37,9 +37,9 @@ def resource_path(relative_path):
 
 def import_tracks():
     def from_string(s):
-        soundfile_name = s + '.mp3'
+        soundfile_name = s + '.wav'
         path = resource_path('samples')
-        return AudioSegment.from_mp3(os.path.join(path, soundfile_name))
+        return AudioSegment.from_wav(os.path.join(path, soundfile_name))
 
     t_list = {}
     for filename in file_list:

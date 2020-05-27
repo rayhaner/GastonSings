@@ -11,12 +11,13 @@ import trackhandling
 
 Builder.load_file(os.path.join(trackhandling.resource_path(None), 'gaston.kv'))
 
+
 class Gaston(BoxLayout):
     description_text = StringProperty("This program can generate an edited version of the Gaston song from the 1991 "
                                       "Disney film Beauty and the Beast, randomly or based on user's selection.")
 
-    default_text = StringProperty("When I was a LAD I ate FOUR DOZEN EGGS every morning to help me get LARGE,\n "
-                                  "And now that I'm GROWN I eat FIVE DOZEN EGGS so I'm roughly the size of a BARGE!")
+    default_text = StringProperty(trackhandling.to_string(*['lad', 'four_dozen', 'eggs1', 'large', 'grown',
+                                                            'five_dozen', 'eggs2', 'barge']))
 
     preview = ObjectProperty(None)
 
